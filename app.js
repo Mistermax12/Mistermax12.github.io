@@ -1,1 +1,7 @@
-// Здесь пока нет ничего, но может быть полезен для будущего расширения
+function showMessage() {
+    document.getElementById('messageBox').classList.remove('hidden');
+}
+
+function hideMessage() {
+    document.getElementById('messageBox').classList.add('hidden');
+}
