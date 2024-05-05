@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f0f0;
 }
 
 .container {
@@ -13,9 +14,35 @@ h1 {
     color: #333;
 }
 
-/* Медиа-запрос для мобильных устройств */
-@media only screen and (max-width: 600px) {
-    .container {
-        padding: 10px;
-    }
+button#connectWalletBtn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button#connectWalletBtn:hover {
+    background-color: transparent;
+    color: #007bff;
+}
+
+.hidden {
+    display: none;
+}
+
+#messageBox {
+    background-color: #fff;
+    border: 2px solid #007bff;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+#messageBox p {
+    margin: 0;
+    color: #333;
 }
