@@ -9,12 +9,14 @@
             background-color: #ffffff; /* Белый фон */
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif; /* Используем шрифт Arial */
         }
 
         .container {
             max-width: 600px; /* Ограничиваем ширину контейнера */
             margin: 20px auto; /* Центрируем контейнер на странице */
             text-align: center;
+            padding-bottom: 20px; /* Добавляем отступ внизу контейнера */
         }
 
         h1 {
@@ -27,11 +29,34 @@
             display: inline-block; /* Делаем блок инлайновым */
             text-transform: uppercase; /* Преобразуем текст в верхний регистр */
         }
+
+        .connect-wallet-btn {
+            display: block; /* Размещаем кнопку на новой строке */
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #ffffff; /* Белый фон */
+            border: 2px solid #007bff; /* Синяя рамка */
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none; /* Убираем подчеркивание */
+            width: 80%; /* Ширина кнопки */
+            max-width: 200px; /* Максимальная ширина кнопки */
+            margin: 0 auto; /* Центрируем кнопку */
+        }
+
+        .connect-wallet-btn:hover {
+            background-color: #007bff; /* Синий фон при наведении */
+            color: #ffffff; /* Белый текст при наведении */
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Скуф кликер</h1>
     </div>
+
+    <a href="#" class="connect-wallet-btn">Connect wallet</a>
 </body>
 </html>
