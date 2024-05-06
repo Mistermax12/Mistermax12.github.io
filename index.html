@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Bot</title>
+    <title>Скуф кликер</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #ffffff; /* Белый фон */
         }
 
         .container {
@@ -18,10 +19,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            color: #ffffff; /* Белый текст */
         }
 
         h1 {
             margin-bottom: 20px;
+            font-size: 24px;
+            text-transform: uppercase; /* Верхний регистр */
+            border: 2px solid #000000; /* Черная рамка */
+            padding: 5px 10px;
         }
 
         .connect-wallet-btn {
@@ -33,6 +39,7 @@
             border: 2px solid #007bff;
             border-radius: 5px;
             cursor: pointer;
+            margin-top: 20px;
         }
 
         .connect-wallet-btn:hover {
@@ -50,7 +57,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Hello, World!</h1>
+        <h1>Скуф кликер</h1>
         <button class="connect-wallet-btn" onclick="showMessage()">Connect wallet</button>
     </div>
 
