@@ -3,18 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Telegram Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chat-container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .message-text {
+            color: #333;
+        }
+
+        .connect-wallet-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .connect-wallet-btn:hover {
+            background-color: transparent;
+            color: #007bff;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Hello, World!</h1>
-        <button id="connectWalletBtn" onclick="showMessage()">Connect Wallet</button>
-        <div id="messageBox" class="hidden">
-            <p>This feature is under development.</p>
-            <button onclick="hideMessage()">Close</button>
+    <div class="chat-container">
+        <div class="chat-messages">
+            <!-- Здесь будут сообщения -->
+            <div class="message">
+                <p class="message-text">Hello! Welcome to the chat.</p>
+            </div>
         </div>
+        <button class="connect-wallet-btn" onclick="showMessage()">Connect wallet</button>
     </div>
-    <script src="app.js"></script>
+
+    <script>
+        function showMessage() {
+            alert('В разработке');
+        }
+    </script>
 </body>
 </html>
