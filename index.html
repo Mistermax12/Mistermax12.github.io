@@ -8,15 +8,21 @@
 </head>
 <body>
   <div class="container">
+    <div class="header">
+      <span class="income-per-hour">Income: 60 coins/hour</span>
+    </div>
     <div class="static-image"></div>
-    <button class="claim-button">CLAIM</button>
+    <div class="balance-display">0.000 coins</div>
     <div class="buttons-container">
       <button class="circle-button">Tasks</button>
       <button class="circle-button">Boosters</button>
       <button class="circle-button">Referrals</button>
     </div>
   </div>
+  <div class="claim-popup hidden">
+    <div class="claim-message"></div>
+    <button class="claim-button">CLAIM</button>
+  </div>
   <script src="app.js"></script>
 </body>
 </html>
-
