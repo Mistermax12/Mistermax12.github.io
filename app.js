@@ -93,7 +93,8 @@ setInterval(() => {
 getBalanceFromServer(userId).then(() => {
   updateBalance();
   updateBalanceDisplay();
-  showClaimPopup();
+  showClaimPopup();  // Показываем окно claim после получения данных с сервера
   updateLastVisit();
 });
+
 
