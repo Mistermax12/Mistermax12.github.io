@@ -4,10 +4,12 @@ let balance = parseFloat(localStorage.getItem('balance')) || 0;
 let accumulatedCoins = parseFloat(localStorage.getItem('accumulatedCoins')) || 0;
 let lastVisit = parseInt(localStorage.getItem('lastVisit')) || Date.now();
 let telegramUserId = localStorage.getItem('telegramUserId') || '';
+const telegramBotToken = 'Ваш_токен_бота';
+const chatId = 'ID_вашего_чата_с_ботом'; // Или можно использовать ID пользователя
 
 // Функция для получения и отображения ID пользователя Telegram
 function getTelegramUserId() {
-  fetch(`https://api.telegram.org/bot6986401149:AAECAm76PEA0Aa_GoLUVrmjThqEYENa4MMM/getMe`)
+  fetch(`https://api.telegram.org/bot${telegramBotToken}/getMe`)
     .then(response => response.json())
     .then(data => {
       telegramUserId = data.result.id;
@@ -25,6 +27,38 @@ function updateTelegramUserIdDisplayBottomRight() {
   telegramUserIdDisplay.textContent = `Telegram ID: ${telegramUserId}`;
 }
 
+// Функция для отправки сообщения в Telegram
+function sendMessageToTelegram(message) {
+  const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+  const data = {
+    chat_id: chatId,
+    text: message
+  };
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Ошибка HTTP: ' + response.status);
+    }
+    console.log('Сообщение успешно отправлено в Telegram');
+  })
+  .catch(error => {
+    console.error('Произошла ошибка при отправке сообщения в Telegram:', error);
+  });
+}
+
+// Функция для отправки баланса в Telegram
+function sendBalanceToTelegram() {
+  const message = `Ваш текущий баланс: ${balance.toFixed(3)} coins`;
+  sendMessageToTelegram(message);
+}
+
 // Функция для обновления времени последнего визита
 function updateLastVisit() {
   lastVisit = Date.now();
@@ -39,6 +73,9 @@ function updateBalance() {
   localStorage.setItem('accumulatedCoins', accumulatedCoins);
   updateLastVisit();
   updateBalanceDisplay();
+  
+  // Отправляем баланс в Telegram после каждого обновления
+  sendBalanceToTelegram();
 }
 
 // Функция для обновления отображаемого баланса
