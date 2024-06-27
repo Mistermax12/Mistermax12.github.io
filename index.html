@@ -1,41 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobile Site</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .telegram-user-id-bottom-right {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Баланс пользователя</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <span class="income-per-hour">Income: 60 coins/hour</span>
+    <div class="container">
+        <h1>Ваш баланс</h1>
+        <div class="balance" id="balance">0</div>
     </div>
-    <div class="static-image"></div>
-    <div class="balance-display">0.000 coins</div>
-    <div class="buttons-container">
-      <button class="circle-button">Tasks</button>
-      <button class="circle-button">Boosters</button>
-      <button class="circle-button">Referrals</button>
-    </div>
-  </div>
-  <div class="claim-popup hidden">
-    <div class="claim-message"></div>
-    <button class="claim-button">CLAIM</button>
-  </div>
-  <div class="telegram-user-id-bottom-right" id="telegramUserId"></div> <!-- Элемент для отображения ID -->
-  <script src="app.js"></script>
+
+    <script>
+        async function getBalance() {
+            const response = await fetch('/api/balance');
+            const data = await response.json();
+            document.getElementById('balance').innerText = data.balance;
+        }
+        
+        window.onload = getBalance;
+    </script>
 </body>
 </html>
