@@ -30,7 +30,6 @@ function showClaimPopup() {
   const claimPopup = document.querySelector('.claim-popup');
   const claimMessage = document.querySelector('.claim-message');
   claimMessage.textContent = `You have accumulated ${accumulatedCoins.toFixed(3)} coins`;
-  claimPopup.classList.remove('hidden');
   claimPopup.classList.add('visible');
 }
 
@@ -42,7 +41,6 @@ document.querySelector('.claim-button').addEventListener('click', function() {
   localStorage.setItem('accumulatedCoins', accumulatedCoins);
   updateBalanceDisplay();
   document.querySelector('.claim-popup').classList.remove('visible');
-  document.querySelector('.claim-popup').classList.add('hidden');
 });
 
 // Обработчики для других кнопок
@@ -55,11 +53,12 @@ document.querySelectorAll('.circle-button').forEach(button => {
 // Обновление дохода каждую секунду
 setInterval(() => {
   updateBalance();
-  showClaimPopup();  // показываем popup каждую секунду (для демонстрации, можно изменить частоту)
 }, 1000);
 
 // Инициализация
 updateBalance();
 updateBalanceDisplay();
+showClaimPopup();
 updateLastVisit();
+
 
