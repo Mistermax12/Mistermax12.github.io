@@ -3,6 +3,7 @@ const incomePerSecond = incomePerHour / 3600;
 let balance = parseFloat(localStorage.getItem('balance')) || 0;
 let accumulatedCoins = parseFloat(localStorage.getItem('accumulatedCoins')) || 0;
 let lastVisit = parseInt(localStorage.getItem('lastVisit')) || Date.now();
+const userId = 12345;  // Замените на реальный user_id
 
 // Обновление времени последнего визита
 function updateLastVisit() {
@@ -33,6 +34,36 @@ function showClaimPopup() {
   claimPopup.classList.add('visible');
 }
 
+// Обновление баланса на сервере
+async function updateBalanceOnServer(userId, balance) {
+  const response = await fetch('http://localhost:5000/update_balance', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      balance: balance
+    })
+  });
+
+  const data = await response.json();
+  console.log(data);
+}
+
+// Получение баланса с сервера
+async function getBalanceFromServer(userId) {
+  const response = await fetch(`http://localhost:5000/get_balance?user_id=${userId}`);
+  const data = await response.json();
+  if (data.error) {
+    console.error(data.error);
+  } else {
+    balance = data.balance;
+    localStorage.setItem('balance', balance);
+    updateBalanceDisplay();
+  }
+}
+
 // Обработчик кнопки "Claim"
 document.querySelector('.claim-button').addEventListener('click', function() {
   balance += accumulatedCoins;
@@ -41,6 +72,9 @@ document.querySelector('.claim-button').addEventListener('click', function() {
   localStorage.setItem('accumulatedCoins', accumulatedCoins);
   updateBalanceDisplay();
   document.querySelector('.claim-popup').classList.remove('visible');
+
+  // Обновление баланса на сервере
+  updateBalanceOnServer(userId, balance);
 });
 
 // Обработчики для других кнопок
@@ -56,7 +90,10 @@ setInterval(() => {
 }, 1000);
 
 // Инициализация
-updateBalance();
-updateBalanceDisplay();
-showClaimPopup();
-updateLastVisit();
+getBalanceFromServer(userId).then(() => {
+  updateBalance();
+  updateBalanceDisplay();
+  showClaimPopup();
+  updateLastVisit();
+});
+
