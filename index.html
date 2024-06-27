@@ -3,23 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Баланс пользователя</title>
-    <link rel="stylesheet" href="/styles.css">
+    <title>Telegram User Info</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Ваш баланс</h1>
-        <div class="balance" id="balance">0</div>
+    <div class="header">
+        <span id="user-id">User ID: </span>
     </div>
-
-    <script>
-        async function getBalance() {
-            const response = await fetch('/api/balance');
-            const data = await response.json();
-            document.getElementById('balance').innerText = data.balance;
-        }
-        
-        window.onload = getBalance;
-    </script>
+    <div class="main">
+        <h1>Balance: <span id="user-balance"></span></h1>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
