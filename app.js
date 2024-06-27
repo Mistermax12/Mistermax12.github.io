@@ -7,21 +7,21 @@ let telegramUserId = localStorage.getItem('telegramUserId') || '';
 
 // Функция для получения и отображения ID пользователя Telegram
 function getTelegramUserId() {
-  fetch('https://api.telegram.org/bot6986401149:AAECAm76PEA0Aa_GoLUVrmjThqEYENa4MMM/getMe')
+  fetch(`https://api.telegram.org/bot6986401149:AAECAm76PEA0Aa_GoLUVrmjThqEYENa4MMM/getMe`)
     .then(response => response.json())
     .then(data => {
       telegramUserId = data.result.id;
       localStorage.setItem('telegramUserId', telegramUserId);
-      updateTelegramUserIdDisplay();
+      updateTelegramUserIdDisplayBottomRight();
     })
     .catch(error => {
       console.error('Ошибка при получении данных с Telegram API:', error);
     });
 }
 
-// Функция для обновления отображаемого ID пользователя Telegram
-function updateTelegramUserIdDisplay() {
-  const telegramUserIdDisplay = document.querySelector('.telegram-user-id');
+// Функция для обновления отображаемого ID пользователя Telegram в правом нижнем углу
+function updateTelegramUserIdDisplayBottomRight() {
+  const telegramUserIdDisplay = document.querySelector('.telegram-user-id-bottom-right');
   telegramUserIdDisplay.textContent = `Telegram ID: ${telegramUserId}`;
 }
 
