@@ -3,6 +3,7 @@ const incomePerSecond = incomePerHour / 3600;
 let balance = parseFloat(localStorage.getItem('balance')) || 0;
 let accumulatedCoins = parseFloat(localStorage.getItem('accumulatedCoins')) || 0;
 let lastVisit = parseInt(localStorage.getItem('lastVisit')) || Date.now();
+const userId = "your_user_id";  // Здесь должен быть реальный user_id
 
 // Обновление времени последнего визита
 function updateLastVisit() {
@@ -33,6 +34,20 @@ function showClaimPopup() {
   claimPopup.classList.add('visible');
 }
 
+// Отправка данных о балансе на сервер
+function sendBalanceToServer() {
+  fetch('http://localhost:5000/update_balance', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ user_id: userId, balance: balance })
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+}
+
 // Обработчик кнопки "Claim"
 document.querySelector('.claim-button').addEventListener('click', function() {
   balance += accumulatedCoins;
@@ -40,6 +55,7 @@ document.querySelector('.claim-button').addEventListener('click', function() {
   localStorage.setItem('balance', balance);
   localStorage.setItem('accumulatedCoins', accumulatedCoins);
   updateBalanceDisplay();
+  sendBalanceToServer();  // Отправляем обновленный баланс на сервер
   document.querySelector('.claim-popup').classList.remove('visible');
 });
 
