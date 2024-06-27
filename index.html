@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobile Site</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .telegram-user-id-bottom-right {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -23,8 +35,7 @@
     <div class="claim-message"></div>
     <button class="claim-button">CLAIM</button>
   </div>
-  <div class="telegram-user-id-bottom-right"></div> <!-- Элемент для отображения ID -->
+  <div class="telegram-user-id-bottom-right" id="telegramUserId"></div> <!-- Элемент для отображения ID -->
   <script src="app.js"></script>
 </body>
 </html>
-
