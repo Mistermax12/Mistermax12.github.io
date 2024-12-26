@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #171718;
+}
+
 .container {
     width: 100%;
 }
