@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -16,16 +18,31 @@ body {
 
 .items {
     text-align: center;
+    color: #fff;
+    font-family: "Sora", serif;
 }
 
-.text {
-    padding-bottom: 200px;
-    color: #fff;
+.text-title h1 {
+    padding-top: 470px;
+    padding-bottom: 8px;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 150%;
 }
+
+.text-title p {
+    padding-bottom: 32px;
+    color: #A2A2A2;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+}
+
 .button {
-    background-color: blue;
-    color: #fff;
-    width: 100%;
-    height: 60px;
-    border-radius: 12px;
+    background-color: #C67C4E;
+    width: 90%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-radius: 16px;
+    margin: 0 auto;
 }
