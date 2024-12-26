@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-    max-width: 385px;
+    max-width: 388px;
 }
 
 .items {
@@ -17,7 +17,7 @@ body {
 .button {
     background-color: blue;
     color: brown;
-    width: 385px;
+    width: 388px;
     height: 60px;
 
 }
