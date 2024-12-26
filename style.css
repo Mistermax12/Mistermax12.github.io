@@ -14,11 +14,11 @@
 
 .text {
     padding-bottom: 200px;
+    color: #fff;
 }
 .button {
-    background-color: blue;
-    color: brown;
+    background-color: green;
+    color: #fff;
     width: max-content;
     height: 60px;
-
 }
