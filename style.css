@@ -1,20 +1,23 @@
-* {
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-.main {
-    width: 100%;
-    padding: 20px;
+.container {
+    max-width: 390px;
+}
+
+.items {
     text-align: center;
 }
 
 .text {
-    color: white;
-    text-align: center;
+    padding-bottom: 200px;
 }
-
 .button {
-    text-align: center;
+    background-color: blue;
+    color: brown;
+    width: 390px;
+    height: 60px;
+
 }
